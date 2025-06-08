@@ -51,6 +51,7 @@ public final class Cli implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
+        Differ.generate(filePath1, filePath2);
         return 0;
     }
 }
