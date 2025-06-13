@@ -1,6 +1,7 @@
 plugins {
     id("application")
     id("io.freefair.lombok") version "8.13.1"
+    id("org.sonarqube") version "6.2.0.5505"
 
     checkstyle
 }
@@ -26,6 +27,14 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "proskdim_java-project-71")
+        property("sonar.organization", "proskdim")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
 }
 
 application  {
