@@ -21,6 +21,9 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew build
         working-directory: ./app
+      - name: Run tests
+        run: make test
+        working-directory: ./app
       - name: Generate coverage report
         run: make report
         working-directory: ./app
