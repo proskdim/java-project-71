@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import java.util.List;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 public final class Differ {
     public static String generate(String filePath1, String filePath2) throws IOException {

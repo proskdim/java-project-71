@@ -4,10 +4,10 @@ import java.util.stream.Collectors;
 
 public final class Formatter {
     private static final String GAP = " ";
-    private static final Integer TABSize = 2;
+    private static final int TAB_SIZE = 2;
 
     public static String format(DiffItem diff, int level) {
-        final String indent = GAP.repeat(level * TABSize);
+        final String indent = GAP.repeat(level * TAB_SIZE);
 
         return switch (diff.getState()) {
             case "ADDED" -> formatAdded(diff, indent);
