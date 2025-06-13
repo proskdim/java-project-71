@@ -1,7 +1,10 @@
 import hexlet.code.Differ;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,13 +12,13 @@ import java.nio.file.Paths;
 class DifferTest {
     private static final String FILE1_PATH = "src/test/resources/file1.json";
     private static final String FILE2_PATH = "src/test/resources/file2.json";
-    private static final String FLAT_OUTPUT_PATH  = "src/test/resources/flat_output.txt";
+    private static final String FLAT_OUTPUT_PATH = "src/test/resources/flat_output.txt";
 
     @Test
     @DisplayName("Test diff generate with valid JSON files")
     void testGenerateWithValidFiles() throws IOException {
         String result = Differ.generate(FILE1_PATH, FILE2_PATH);
-        assert(result).equals(getFlatOutput());
+        assert (result).equals(getFlatOutput());
     }
 
     @Test
@@ -46,7 +49,7 @@ class DifferTest {
         assertFalse(result.equals(getFlatOutput()));
     }
 
-     private String getFlatOutput() throws IOException {
+    private String getFlatOutput() throws IOException {
         return Files.readString(Paths.get(FLAT_OUTPUT_PATH));
     }
 }
