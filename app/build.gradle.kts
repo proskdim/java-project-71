@@ -20,6 +20,7 @@ dependencies {
 
     // jackson
     implementation("com.fasterxml.jackson.core:jackson-databind:2.19.0")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.19.0")
 
     // junit
     testImplementation(platform("org.junit:junit-bom:5.10.0"))

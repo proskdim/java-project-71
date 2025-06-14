@@ -8,8 +8,8 @@ import java.util.TreeSet;
 public final class Differ {
     public static String generate(String filePath1, String filePath2) throws IOException {
         try {
-            JsonNode node1 = Utils.parse(filePath1);
-            JsonNode node2 = Utils.parse(filePath2);
+            JsonNode node1 = FileUtils.parse(filePath1);
+            JsonNode node2 = FileUtils.parse(filePath2);
 
             DiffItem diff = createDiffTree(node1, node2);
             return Formatter.format(diff, 0);

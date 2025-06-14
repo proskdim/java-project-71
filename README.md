@@ -6,5 +6,8 @@
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=proskdim_java-project-71&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=proskdim_java-project-71)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=proskdim_java-project-71&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=proskdim_java-project-71)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=proskdim_java-project-71&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=proskdim_java-project-71)
-
+### JSON parse
 [![6_step](app/docs/images/6_step.png)](app/docs/images/6_step.png)
+
+### YAML parse
+[![8_step](app/docs/images/6_step.png)](app/docs/images/8_step.png)
