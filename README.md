@@ -10,4 +10,4 @@
 [![6_step](app/docs/images/6_step.png)](app/docs/images/6_step.png)
 
 ### YAML parse
-[![8_step](app/docs/images/6_step.png)](app/docs/images/8_step.png)
+[![8_step](app/docs/images/8_step.png)](app/docs/images/8_step.png)
