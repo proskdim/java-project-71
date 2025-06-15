@@ -11,3 +11,6 @@
 
 ### YAML parse
 [![8_step](app/docs/images/8_step.png)](app/docs/images/8_step.png)
+
+### DEEP parse
+[![9_step](app/docs/images/9_step.png)](app/docs/images/9_step.png)
