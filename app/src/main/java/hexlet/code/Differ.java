@@ -12,7 +12,7 @@ public final class Differ {
             JsonNode node2 = FileUtils.parse(filePath2);
 
             DiffItem diff = createDiffTree(node1, node2);
-            return Formatter.format(diff, 0);
+            return Stylish.format(diff, 0);
         } catch (IOException e) {
             throw new IOException("Failed to parse file: " + e.getMessage(), e);
         }
