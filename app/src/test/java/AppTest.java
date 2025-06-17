@@ -14,6 +14,7 @@ public class AppTest {
 
     public static final String DEEP_OUTPUT_PATH = "src/test/resources/deep/deep_output.txt";
     public static final String PLAIN_OUTPUT_PATH = "src/test/resources/plain/plain_output.txt";
+    public static final String JSON_OUTPUT_PATH = "src/test/resources/json/json_output.txt";
 
     @Test
     @DisplayName("Test App picocli call -h option")
@@ -75,6 +76,27 @@ public class AppTest {
             App.main(new String[]{"-f", "plain", FILE1, FILE2});
 
             String expected = getOutputPath(PLAIN_OUTPUT_PATH);
+
+            assert expected.equals(outContent.toString().trim());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            System.setOut(originalOut);
+        }
+    }
+
+    @Test
+    @DisplayName("Test App picocli call -F option json")
+    public void testAppShowOptionFormatJson() {
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+        System.setOut(new PrintStream(outContent));
+
+        try {
+            App.main(new String[]{"-f", "json", FILE1, FILE2});
+
+            String expected = getOutputPath(JSON_OUTPUT_PATH);
 
             assert expected.equals(outContent.toString().trim());
         } catch (IOException e) {
