@@ -14,3 +14,6 @@
 
 ### DEEP parse
 [![9_step](app/docs/images/9_step.png)](app/docs/images/9_step.png)
+
+### PLAIN formater
+[![10_step](app/docs/images/10_step.png)](app/docs/images/10_step.png)
