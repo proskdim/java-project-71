@@ -27,7 +27,7 @@ class DifferTest {
     private static final String FLAT_OUTPUT_PATH = "src/test/resources/flat/flat_output.txt";
     private static final String DEEP_OUTPUT_PATH = "src/test/resources/deep/deep_output.txt";
 
-    private static String FORMAT = "stylish";
+    private static final String FORMAT = "stylish";
 
     @Test
     @DisplayName("Test diff generate with deep valid JSON files")
