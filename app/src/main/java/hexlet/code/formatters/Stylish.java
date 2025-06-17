@@ -1,16 +1,22 @@
-package hexlet.code;
+package hexlet.code.formatters;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import hexlet.code.DiffItem;
 
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-public final class Stylish {
+public final class Stylish implements BaseFormatter {
     private static final String GAP = " ";
     private static final int TAB_SIZE = 2;
 
-    public static String format(DiffItem diff, int level) {
+    @Override
+    public String format(DiffItem item) {
+        return format(item, 0);
+    }
+
+    public String format(DiffItem diff, int level) {
         final String indent = GAP.repeat(level * TAB_SIZE);
 
         return switch (diff.getState()) {
@@ -23,29 +29,29 @@ public final class Stylish {
         };
     }
 
-    private static String formatAdded(DiffItem diff, String indent) {
+    private String formatAdded(DiffItem diff, String indent) {
         var newValue = formatNodeText(diff.getNewValue());
         return indent + "+ " + diff.getFieldName() + ": " + newValue;
     }
 
-    private static String formatRemoved(DiffItem diff, String indent) {
+    private String formatRemoved(DiffItem diff, String indent) {
         var oldValue = formatNodeText(diff.getOldValue());
         return indent + "- " + diff.getFieldName() + ": " + oldValue;
     }
 
-    private static String formatChanged(DiffItem diff, String indent) {
+    private String formatChanged(DiffItem diff, String indent) {
         var oldValue = formatNodeText(diff.getOldValue());
         var newValue = formatNodeText(diff.getNewValue());
         return indent + "- " + diff.getFieldName() + ": " + oldValue + "\n"
                 + indent + "+ " + diff.getFieldName() + ": " + newValue;
     }
 
-    private static String formatUnchanged(DiffItem diff, String indent) {
+    private String formatUnchanged(DiffItem diff, String indent) {
         var oldValue = formatNodeText(diff.getOldValue());
         return indent + "  " + diff.getFieldName() + ": " + oldValue;
     }
 
-    private static String formatObject(DiffItem diff, String indent, int level) {
+    private String formatObject(DiffItem diff, String indent, int level) {
         StringBuilder result = new StringBuilder();
         String fieldName = diff.getFieldName();
 
@@ -58,7 +64,6 @@ public final class Stylish {
         List<DiffItem> children = diff.getChildren();
 
         if (!children.isEmpty()) {
-            String newIndent = indent + "  ";
             String nestedFields = children.stream()
                     .map(child -> format(child, level + 1))
                     .collect(Collectors.joining("\n"));
@@ -69,7 +74,7 @@ public final class Stylish {
         return result.toString();
     }
 
-    private static String formatNodeText(JsonNode node) {
+    private String formatNodeText(JsonNode node) {
         if (node == null) {
             return "null";
         }
@@ -84,13 +89,13 @@ public final class Stylish {
         }
     }
 
-    private static String formatArray(JsonNode arrayNode) {
+    private String formatArray(JsonNode arrayNode) {
         StringJoiner joiner = new StringJoiner(", ", "[", "]");
         arrayNode.elements().forEachRemaining(element -> joiner.add(formatNodeText(element)));
         return joiner.toString();
     }
 
-    private static String formatObject(JsonNode objectNode) {
+    private String formatObject(JsonNode objectNode) {
         StringJoiner joiner = new StringJoiner(", ", "{", "}");
         objectNode.fields().forEachRemaining(field ->
                 joiner.add(field.getKey() + "=" + formatNodeText(field.getValue()))

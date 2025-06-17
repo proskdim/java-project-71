@@ -27,6 +27,8 @@ class DifferTest {
     private static final String FLAT_OUTPUT_PATH = "src/test/resources/flat/flat_output.txt";
     private static final String DEEP_OUTPUT_PATH = "src/test/resources/deep/deep_output.txt";
 
+    private static String FORMAT = "stylish";
+
     @Test
     @DisplayName("Test diff generate with deep valid JSON files")
     void testGenerateWithValidFlatFiles() throws IOException {
@@ -36,7 +38,7 @@ class DifferTest {
         );
 
         for (List<String> filePair : files) {
-            String result = Differ.generate(filePair.get(0), filePair.get(1));
+            String result = Differ.generate(filePair.get(0), filePair.get(1), FORMAT);
             System.out.println(result);
             assert (result).equals(getFlatOutput());
         }
@@ -51,7 +53,7 @@ class DifferTest {
         );
 
         for (List<String> filePair : files) {
-            String result = Differ.generate(filePair.get(0), filePair.get(1));
+            String result = Differ.generate(filePair.get(0), filePair.get(1), FORMAT);
             System.out.println(result);
             assert (result).equals(getDeepOutput());
         }
@@ -61,7 +63,7 @@ class DifferTest {
     @DisplayName("Test diff generate with non-existent-file")
     void testGenerateWithNonExistentFile() {
         assertThrows(IOException.class, () -> {
-            Differ.generate("non-existent-file.json", FILE2_FLAT_JSON_PATH);
+            Differ.generate("non-existent-file.json", FILE2_FLAT_JSON_PATH, FORMAT);
         });
     }
 
@@ -72,7 +74,7 @@ class DifferTest {
         Files.write(Paths.get(invalidFilePath), "{invalid: json}".getBytes());
 
         assertThrows(IOException.class, () -> {
-            Differ.generate(invalidFilePath, FILE2_FLAT_JSON_PATH);
+            Differ.generate(invalidFilePath, FILE2_FLAT_JSON_PATH, FORMAT);
         });
 
         Files.deleteIfExists(Paths.get(invalidFilePath));
@@ -81,7 +83,7 @@ class DifferTest {
     @Test
     @DisplayName("Test diff generate with identical files")
     void testGenerateWithIdenticalFiles() throws IOException {
-        String result = Differ.generate(FILE1_FLAT_JSON_PATH, FILE1_FLAT_JSON_PATH);
+        String result = Differ.generate(FILE1_FLAT_JSON_PATH, FILE1_FLAT_JSON_PATH, FORMAT);
         assertFalse(result.equals(getFlatOutput()));
     }
 

@@ -49,7 +49,7 @@ public final class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        var result = Differ.generate(filePath1, filePath2);
+        var result = Differ.generate(filePath1, filePath2, format);
         System.out.println(result);
         return 0;
     }

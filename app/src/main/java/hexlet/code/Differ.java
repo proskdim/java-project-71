@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.TreeSet;
 
 public final class Differ {
-    public static String generate(String filePath1, String filePath2) throws IOException {
+    public static String generate(String filePath1, String filePath2, String format) throws IOException {
         try {
             JsonNode node1 = FileUtils.parse(filePath1);
             JsonNode node2 = FileUtils.parse(filePath2);
 
             DiffItem diff = createDiffTree(node1, node2);
-            return Stylish.format(diff, 0);
+            return Formatter.format(diff, format);
         } catch (IOException e) {
             throw new IOException("Failed to parse file: " + e.getMessage(), e);
         }
