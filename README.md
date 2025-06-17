@@ -17,3 +17,6 @@
 
 ### PLAIN formater
 [![10_step](app/docs/images/10_step.png)](app/docs/images/10_step.png)
+
+### JSON formater
+[![11_step](app/docs/images/11_step.png)](app/docs/images/11_step.png)
