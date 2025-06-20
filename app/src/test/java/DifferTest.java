@@ -31,7 +31,7 @@ class DifferTest {
 
     @Test
     @DisplayName("Test diff generate with deep valid JSON files")
-    void testGenerateWithValidFlatFiles() throws IOException {
+    void testGenerateWithValidFlatFiles() throws Exception {
         List<List<String>> files = List.of(
                 List.of(FILE1_FLAT_JSON_PATH, FILE2_FLAT_JSON_PATH),
                 List.of(FILE1_FLAT_YML_PATH, FILE2_FLAT_YML_PATH)
@@ -46,7 +46,7 @@ class DifferTest {
 
     @Test
     @DisplayName("Test diff generate with deep valid JSON files")
-    void testGenerateWithValidDeepFiles() throws IOException {
+    void testGenerateWithValidDeepFiles() throws Exception {
         List<List<String>> files = List.of(
                 List.of(FILE1_DEEP_JSON_PATH, FILE2_DEEP_JSON_PATH),
                 List.of(FILE1_DEEP_YML_PATH, FILE2_DEEP_YML_PATH)
@@ -82,7 +82,7 @@ class DifferTest {
 
     @Test
     @DisplayName("Test diff generate with identical files")
-    void testGenerateWithIdenticalFiles() throws IOException {
+    void testGenerateWithIdenticalFiles() throws Exception {
         String result = Differ.generate(FILE1_FLAT_JSON_PATH, FILE1_FLAT_JSON_PATH, FORMAT);
         assertFalse(result.equals(getFlatOutput()));
     }

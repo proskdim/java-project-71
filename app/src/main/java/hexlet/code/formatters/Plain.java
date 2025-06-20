@@ -42,8 +42,11 @@ public final class Plain implements BaseFormatter {
                 var messages = format(item);
                 result.add(messages);
             }
+            case "UNCHANGED" -> {
+                result.add("");
+            }
             default -> {
-                // no action needed for "UNCHANGED" state
+                throw new RuntimeException("Unknown input: " + item.getState());
             }
         }
 
