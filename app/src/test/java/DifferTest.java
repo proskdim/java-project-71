@@ -38,7 +38,7 @@ class DifferTest {
         );
 
         for (List<String> filePair : files) {
-            String result = Differ.generate(filePair.get(0), filePair.get(1), FORMAT);
+            String result = Differ.generate(filePair.get(0), filePair.get(1));
             System.out.println(result);
             assert (result).equals(getFlatOutput());
         }

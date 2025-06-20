@@ -10,4 +10,8 @@ public final class Differ {
         DiffItem diff = DiffCreator.create(node1, node2);
         return Formatter.format(diff, format);
     }
+
+    public static String generate(String filePath1, String filePath2) throws Exception {
+        return generate(filePath1, filePath2, "stylish");
+    }
 }
